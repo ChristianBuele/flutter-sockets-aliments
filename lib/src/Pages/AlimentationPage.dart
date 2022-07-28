@@ -33,6 +33,13 @@ class AlimentationPage extends StatelessWidget {
     print('Realizando cards');
     List<Widget> cards = [];
     for (var aliment in aliments) {
+      var imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
+      if(aliment.productos.length>0 ){
+        if(aliment.productos[0]['imageUrl']!=null){
+          imageUrl=aliment.productos[0]['imageUrl'];
+        }
+        
+      }
       cards.add(
         Container(
           margin: EdgeInsets.all(10),
@@ -43,7 +50,7 @@ class AlimentationPage extends StatelessWidget {
               width: size.width*0.3,
               height: size.height*0.15,
               placeholder:  NetworkImage("https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"), 
-              image: NetworkImage(aliment.productos[0]['imageUrl']??'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png')
+              image: NetworkImage(imageUrl)
             ),
             Text(aliment.name),
             // TextButton(onPressed: (){
